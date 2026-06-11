@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corefone Salud 360 - Presentación comercial para instituciones de salud">
+    <title>Corefone Salud 360 | Presentación Comercial</title>
+    <style>
+        :root {
+            --corefone-blue: #0A2540;
+            --corefone-green: #66CC00;
+            --corefone-light-blue: #0066CC;
+            --corefone-soft-blue: #EAF3FF;
+            --dark: #1C2434;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+            --text-dark: #2D3748;
+            --text-muted: #718096;
+            --border: #E2E8F0;
+            --highlight-bg: #F4FBF4;
+            --shadow: 0 10px 30px rgba(10, 37, 64, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text-dark);
+            line-height: 1.55;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: linear-gradient(180deg, var(--corefone-blue) 0%, #071B30 100%);
+            color: var(--white);
+            padding: 2rem 1.25rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 4px solid var(--corefone-green);
+            z-index: 10;
+        }
+
+        .logo-area {
+            margin-bottom: 1rem;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .logo-img {
+            display: block;
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+        }
+
+        .wordmark {
+            color: var(--corefone-blue);
+            font-size: 1.85rem;
+            font-weight: 850;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .wordmark span {
+            color: var(--corefone-green);
+        }
+
+        .wordmark-subtitle {
+            margin-top: 0.4rem;
+            color: var(--text-muted);
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .brand-subtitle {
+            font-size: 0.86rem;
+            color: #A3B3C2;
+            margin: 0.9rem 0 1.4rem;
+            line-height: 1.45;
+        }
+
+        .role-selector-box {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.85rem;
+            border-radius: 8px;
+            margin-bottom: 1.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .role-selector-title {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--corefone-green);
+            margin-bottom: 0.55rem;
+            letter-spacing: 0.07em;
+        }
+
+        .role-btn {
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #C1D4E8;
+            padding: 0.5rem 0.55rem;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 0.84rem;
+            font-weight: 650;
+            margin-bottom: 0.38rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .role-btn:hover,
+        .role-btn.active {
+            background: var(--white);
+            color: var(--corefone-blue);
+            border-color: var(--white);
+        }
+
+        .nav-list {
+            list-style: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 0.75rem;
+        }
+
+        .nav-link {
+            display: block;
+            color: #C1D4E8;
+            text-decoration: none;
+            padding: 0.48rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            font-weight: 520;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            margin-bottom: 0.15rem;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.09);
+            color: var(--corefone-green);
+        }
+
+        .sidebar-footer {
+            font-size: 0.74rem;
+            color: #A3B3C2;
+            text-align: center;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin-top: 1rem;
+        }
+
+        .main-content {
+            margin-left: 350px;
+            flex-grow: 1;
+            padding: 3.5rem 4.25rem 6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: radial-gradient(circle at top right, #F5FAFF 0, #FFFFFF 30%, #FFFFFF 100%);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            max-width: 1050px;
+            margin: 0 auto;
+            width: 100%;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-header {
+            margin-bottom: 1.55rem;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 0.85rem;
+        }
+
+        .slide-tag {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--corefone-light-blue);
+            letter-spacing: 0.07em;
+        }
+
+        h1.slide-title {
+            font-size: clamp(2.3rem, 4vw, 4rem);
+            color: var(--corefone-blue);
+            font-weight: 850;
+            margin-top: 0.25rem;
+            letter-spacing: -0.055em;
+        }
+
+        h2.slide-title {
+            font-size: clamp(1.65rem, 3vw, 2.25rem);
+            color: var(--corefone-blue);
+            font-weight: 800;
+            margin-top: 0.25rem;
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+        }
+
+        h3 {
+            color: var(--corefone-blue);
+            font-size: 1.12rem;
+        }
+
+        .lead-text {
+            font-size: 1.08rem;
+            color: var(--text-muted);
+            margin-bottom: 1.35rem;
+            max-width: 920px;
+        }
+
+        .hero-text {
+            font-size: clamp(1.18rem, 2vw, 1.45rem);
+            color: var(--text-dark);
+            margin-bottom: 1.6rem;
+            max-width: 900px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.35rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.18rem;
+            transition: all 0.2s ease;
+            position: relative;
+            box-shadow: 0 3px 14px rgba(10, 37, 64, 0.035);
+        }
+
+        .card.soft {
+            background: var(--light);
+        }
+
+        .card.accent {
+            border-left: 4px solid var(--corefone-green);
+        }
+
+        .role-highlight {
+            border-left: 4px solid var(--corefone-blue);
+        }
+
+        .role-highlight.active-focus {
+            background-color: var(--highlight-bg);
+            border-left: 4px solid var(--corefone-green);
+            box-shadow: 0 8px 22px rgba(102, 204, 0, 0.10);
+        }
+
+        .focus-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            font-size: 0.62rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: var(--corefone-blue);
+            color: white;
+            padding: 0.2rem 0.48rem;
+            border-radius: 4px;
+            display: none;
+            letter-spacing: 0.04em;
+        }
+
+        .active-focus .focus-badge {
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.04rem;
+            font-weight: 800;
+            color: var(--corefone-blue);
+            margin-bottom: 0.45rem;
+            padding-right: 4rem;
+        }
+
+        .eyebrow {
+            color: var(--corefone-light-blue);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 0.25rem;
+        }
+
+        ul.custom-list {
+            list-style: none;
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 1.18rem;
+            margin-bottom: 0.42rem;
+            font-size: 0.94rem;
+        }
+
+        ul.custom-list li::before {
+            content: "•";
+            color: var(--corefone-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .value-box {
+            margin-top: 2.1rem;
+            padding: 1.35rem;
+            background: var(--light);
+            border-left: 5px solid var(--corefone-green);
+            border-radius: 8px;
+            max-width: 920px;
+        }
+
+        .pill-row {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            margin: 1.2rem 0;
+        }
+
+        .pill {
+            background: var(--corefone-soft-blue);
+            color: var(--corefone-blue);
+            border: 1px solid #D6E9FF;
+            border-radius: 999px;
+            padding: 0.45rem 0.7rem;
+            font-size: 0.86rem;
+            font-weight: 720;
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.85rem;
+            margin-top: 1.5rem;
+        }
+
+        .stack-box {
+            background: var(--corefone-blue);
+            color: var(--white);
+            padding: 1rem 0.8rem;
+            border-radius: 10px;
+            min-height: 146px;
+            border-bottom: 4px solid var(--corefone-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+
+        .stack-box .number {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #A3B3C2;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+
+        .stack-box .title {
+            font-size: 0.98rem;
+            font-weight: 800;
+            line-height: 1.18;
+            margin: 0.55rem 0;
+        }
+
+        .stack-box .desc {
+            font-size: 0.78rem;
+            color: #D8E3F0;
+        }
+
+        .architecture-wrap {
+            margin-top: 2rem;
+        }
+
+        .architecture-top {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .architecture-module {
+            background: var(--corefone-blue);
+            color: var(--white);
+            border-radius: 14px;
+            padding: 2rem 1.25rem 2.1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--corefone-green);
+            box-shadow: var(--shadow);
+        }
+
+        .architecture-module .module-kicker {
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 800;
+            color: #C8D5E4;
+            margin-bottom: 0.7rem;
+        }
+
+        .architecture-module .module-title {
+            font-size: 1.08rem;
+            font-weight: 800;
+            line-height: 1.28;
+        }
+
+        .architecture-base {
+            margin-top: 1.35rem;
+            background: var(--corefone-light-blue);
+            color: var(--white);
+            border-radius: 14px;
+            padding: 1.7rem 1.4rem 1.85rem;
+            text-align: center;
+            border-bottom: 6px solid var(--corefone-green);
+            box-shadow: var(--shadow);
+        }
+
+        .architecture-base .module-kicker {
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 800;
+            color: #DCEBFF;
+            margin-bottom: 0.55rem;
+        }
+
+        .architecture-base .module-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .timeline-step {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.1rem;
+            box-shadow: 0 4px 16px rgba(10, 37, 64, 0.04);
+            position: relative;
+        }
+
+        .timeline-step::before {
+            content: attr(data-step);
+            display: inline-block;
+            background: var(--corefone-blue);
+            color: var(--white);
+            font-size: 0.73rem;
+            font-weight: 800;
+            padding: 0.3rem 0.55rem;
+            border-radius: 999px;
+            margin-bottom: 0.7rem;
+        }
+
+        .metric-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric {
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.95rem;
+        }
+
+        .metric strong {
+            display: block;
+            color: var(--corefone-blue);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric span {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .presentation-controls {
+            position: fixed;
+            bottom: 1.6rem;
+            right: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: var(--white);
+            padding: 0.55rem;
+            border-radius: 999px;
+            box-shadow: 0 8px 25px rgba(10,37,64,0.10);
+            border: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .btn-nav {
+            background-color: var(--corefone-blue);
+            color: var(--white);
+            border: none;
+            padding: 0.55rem 1.05rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 750;
+            font-size: 0.84rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--corefone-light-blue);
+            transform: translateY(-1px);
+        }
+
+        .slide-counter {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            min-width: 58px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            position: fixed;
+            left: 350px;
+            bottom: 0;
+            height: 4px;
+            width: calc(100% - 350px);
+            background: #E7EEF5;
+            z-index: 99;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--corefone-green);
+            width: 10%;
+            transition: width 0.2s ease;
+        }
+
+        .section-note {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-top: 0.8rem;
+        }
+
+        .two-column-visual {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 1.6rem;
+            align-items: center;
+        }
+
+        .blue-panel {
+            background: var(--corefone-blue);
+            color: var(--white);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border-bottom: 5px solid var(--corefone-green);
+        }
+
+        .blue-panel p,
+        .blue-panel li {
+            color: #D8E3F0;
+        }
+
+        .blue-panel h3 {
+            color: var(--white);
+            margin-bottom: 0.65rem;
+        }
+
+        .highlight-text {
+            color: var(--corefone-blue);
+            font-weight: 800;
+        }
+
+        /* ── Hamburger button ── */
+        .hamburger-btn {
+            display: none;
+            position: fixed;
+            top: 0.85rem;
+            left: 0.85rem;
+            z-index: 200;
+            background: var(--corefone-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            font-size: 1.35rem;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(10,37,64,0.22);
+            transition: background 0.2s;
+        }
+        .hamburger-btn:hover { background: var(--corefone-light-blue); }
+
+        /* ── Sidebar overlay for mobile ── */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 90;
+            backdrop-filter: blur(2px);
+        }
+        .sidebar-overlay.visible { display: block; }
+
+        /* ── Tablet breakpoint (≤ 1100px) ── */
+        @media (max-width: 1100px) {
+            .hamburger-btn { display: flex; }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 300px;
+                height: 100vh;
+                transform: translateX(-100%);
+                transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 100;
+                overflow-y: auto;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+                box-shadow: 4px 0 40px rgba(10,37,64,0.25);
+            }
+
+            .app-container {
+                display: block;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 5rem 1.5rem 6rem;
+                min-height: 100vh;
+            }
+            .progress-bar {
+                left: 0;
+                width: 100%;
+            }
+            .presentation-controls {
+                right: 1rem;
+                bottom: 1rem;
+            }
+            .stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .metric-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .architecture-top {
+                grid-template-columns: 1fr;
+            }
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Mobile breakpoint (≤ 600px) ── */
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 4.5rem 1rem 5.5rem;
+            }
+            .grid-2,
+            .two-column-visual {
+                grid-template-columns: 1fr;
+            }
+            .grid-3,
+            .stack-grid,
+            .metric-strip {
+                grid-template-columns: 1fr;
+            }
+            .role-selector-box {
+                display: none;
+            }
+            .presentation-controls {
+                left: 1rem;
+                right: 1rem;
+                justify-content: space-between;
+                bottom: 0.85rem;
+            }
+            .btn-nav {
+                padding: 0.7rem 1.1rem;
+                font-size: 0.9rem;
+                min-width: 90px;
+                text-align: center;
+            }
+            h1.slide-title {
+                font-size: clamp(1.8rem, 7vw, 2.8rem);
+            }
+            h2.slide-title {
+                font-size: clamp(1.35rem, 5.5vw, 1.9rem);
+            }
+            .nav-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.2rem;
+            }
+            .value-box {
+                margin-top: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="hamburger-btn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-sidebar">&#9776;</button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+    <div class="app-container">
+        <aside class="sidebar" id="main-sidebar">
+            <div>
+                <div class="logo-area" aria-label="Corefone">
+                    <img class="logo-img" src="data:image/png;base64,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" alt="Corefone logo">
+                </div>
+                <div class="brand-subtitle">Tecnología, procesos y gestión operativa para instituciones de salud.</div>
+
+                <div class="role-selector-box">
+                    <div class="role-selector-title">Foco de la presentación</div>
+                    <button class="role-btn active" id="btn-all" onclick="setRoleFocus('all')">Deck completo</button>
+                    <button class="role-btn" id="btn-gg" onclick="setRoleFocus('gg')">Gerencia General / Finanzas</button>
+                    <button class="role-btn" id="btn-dt" onclick="setRoleFocus('dt')">Dirección Técnica / Asistencial</button>
+                    <button class="role-btn" id="btn-cc" onclick="setRoleFocus('cc')">Operaciones / Contact Center</button>
+                </div>
+
+                <ul class="nav-list">
+                    <li><a class="nav-link active" onclick="goToSlide(0)">1. Portada</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(1)">2. Corefone</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(2)">3. Desafíos</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(3)">4. Propuesta de valor</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(4)">5. Arquitectura</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(5)">6. Metas MSP</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(6)">7. Citas y atención</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(7)">8. Ingresos comerciales</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(8)">9. Implementación</a></li>
+                    <li><a class="nav-link" onclick="goToSlide(9)">10. Próximos pasos</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">Corefone S.A. © 2026 · Presentación comercial</div>
+        </aside>
+
+        <main class="main-content">
+            <section class="slide active">
+                <span class="slide-tag">Solución vertical para salud</span>
+                <h1 class="slide-title">Corefone Salud 360</h1>
+                <p class="hero-text">Automatización operativa, cumplimiento asistencial y gestión inteligente del socio para instituciones de salud.</p>
+                <div class="value-box">
+                    <p>Una solución modular que combina inteligencia artificial, canales conversacionales, automatización documental y operación especializada para mejorar la productividad, asegurar procesos críticos y optimizar ingresos recurrentes.</p>
+                </div>
+                <div class="pill-row">
+                    <span class="pill">IA conversacional</span>
+                    <span class="pill">WhatsApp y voz</span>
+                    <span class="pill">Automatización documental</span>
+                    <span class="pill">Gestión operativa</span>
+                    <span class="pill">Trazabilidad</span>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Quién es Corefone</span>
+                    <h2 class="slide-title">De la gestión de interacciones a soluciones verticales de productividad</h2>
+                </div>
+                <div class="two-column-visual">
+                    <div>
+                        <p class="lead-text">Corefone cuenta con 16 años de experiencia gestionando interacciones de alta complejidad entre empresas y clientes.</p>
+                        <p>Hoy integra esa experiencia operativa con tecnologías de automatización, IA conversacional, canales de voz, WhatsApp y diseño de procesos para resolver cuellos de botella específicos en industrias con alta demanda de atención.</p>
+                    </div>
+                    <div class="blue-panel">
+                        <h3>Filosofía de complementariedad</h3>
+                        <p>No reemplazamos la atención humana. Automatizamos lo repetitivo, estructurado y masivo para que los equipos internos se concentren en los casos complejos, sensibles y clínicos.</p>
+                        <ul class="custom-list" style="margin-top: 1rem;">
+                            <li>Reducción de carga operativa.</li>
+                            <li>Mayor trazabilidad de procesos críticos.</li>
+                            <li>Escalabilidad sin perder control institucional.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Desafíos actuales del sector</span>
+                    <h2 class="slide-title">Más exigencia operativa, más datos y mayor presión sobre los recursos</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="card role-highlight target-gg">
+                        <div class="focus-badge">Gerencia</div>
+                        <div class="card-title">Presión sobre la estructura de costos</div>
+                        <p>Crecientes exigencias operativas, regulatorias y asistenciales que demandan más capacidad de gestión sobre la misma base de recursos.</p>
+                    </div>
+                    <div class="card role-highlight target-dt">
+                        <div class="focus-badge">Dirección Técnica</div>
+                        <div class="card-title">Procesos ministeriales intensivos en datos</div>
+                        <p>Metas, screenings, registros, planillas nominalizadas y seguimientos que requieren consistencia, trazabilidad y cumplimiento de plazos.</p>
+                    </div>
+                    <div class="card role-highlight target-cc">
+                        <div class="focus-badge">Operaciones</div>
+                        <div class="card-title">Saturación de canales y agendas</div>
+                        <p>Demanda telefónica y digital creciente, picos estacionales, consultas repetitivas, cancelaciones y presión sobre el contact center.</p>
+                    </div>
+                    <div class="card role-highlight target-gg">
+                        <div class="focus-badge">Gerencia</div>
+                        <div class="card-title">Retención, mora y sostenibilidad del padrón</div>
+                        <p>Necesidad de accionar de forma proactiva sobre socios particulares, deuda, baja reciente y momentos críticos del ciclo de afiliación.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Propuesta de valor</span>
+                    <h2 class="slide-title">Qué aporta Corefone Salud 360 a la institución</h2>
+                </div>
+                <p class="lead-text">Corefone Salud 360 combina automatización, canales conversacionales y operación especializada para mejorar la productividad, ordenar procesos críticos y fortalecer la gestión del socio.</p>
+                <div class="grid-3">
+                    <div class="card accent role-highlight target-dt">
+                        <div class="focus-badge">Dirección Técnica</div>
+                        <div class="eyebrow">Cumplimiento y trazabilidad</div>
+                        <h3>Procesos asistenciales críticos bajo control</h3>
+                        <p class="section-note">Seguimiento estructurado de metas, screenings, alertas, no consentimiento, reportabilidad y automatización documental integrada a los flujos MSP.</p>
+                    </div>
+                    <div class="card accent role-highlight target-cc">
+                        <div class="focus-badge">Operaciones</div>
+                        <div class="eyebrow">Productividad operativa</div>
+                        <h3>Menos carga repetitiva y mejor uso de agenda</h3>
+                        <p class="section-note">Resolución de consultas frecuentes, coordinación de citas y estudios, gestión de cancelaciones, listas de espera y derivación asistida.</p>
+                    </div>
+                    <div class="card accent role-highlight target-gg">
+                        <div class="focus-badge">Gerencia</div>
+                        <div class="eyebrow">Ingresos y padrón</div>
+                        <h3>Acción sistemática sobre mora y retención</h3>
+                        <p class="section-note">Campañas proactivas para recuperación de socios particulares, prevención de bajas, fidelización y gestión comercial del padrón.</p>
+                    </div>
+                </div>
+                <div class="metric-strip">
+                    <div class="metric"><strong>Automatizar</strong><span>Tareas repetitivas y estructuradas</span></div>
+                    <div class="metric"><strong>Ordenar</strong><span>Demanda, agenda y campañas</span></div>
+                    <div class="metric"><strong>Trazar</strong><span>Contactos, decisiones y derivaciones</span></div>
+                    <div class="metric"><strong>Escalar</strong><span>Procesos sin perder control institucional</span></div>
+                </div>
+                <div class="value-box">
+                    <p><span class="highlight-text">Mensaje central:</span> no reemplazamos la atención humana; automatizamos lo masivo, repetitivo y estructurado para que los equipos internos se concentren en los casos complejos, sensibles y clínicos.</p>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Arquitectura modular</span>
+                    <h2 class="slide-title">Tres módulos funcionales sostenidos por una base omnicanal transversal</h2>
+                </div>
+                <p class="lead-text">La solución se organiza en tres módulos principales y un módulo transversal de Atención Omnicanal Asistida que soporta la interacción, la trazabilidad y la ejecución operativa de toda la propuesta.</p>
+                <div class="architecture-wrap">
+                    <div class="architecture-top">
+                        <div class="architecture-module role-highlight target-dt">
+                            <div class="focus-badge">Dirección Técnica</div>
+                            <div class="module-kicker">Módulo I</div>
+                            <div class="module-title">Metas Asistenciales MSP</div>
+                        </div>
+                        <div class="architecture-module role-highlight target-cc">
+                            <div class="focus-badge">Operaciones</div>
+                            <div class="module-kicker">Módulo II</div>
+                            <div class="module-title">Citas, Estudios y Servicios</div>
+                        </div>
+                        <div class="architecture-module role-highlight target-gg">
+                            <div class="focus-badge">Gerencia</div>
+                            <div class="module-kicker">Módulo III</div>
+                            <div class="module-title">Retención, Mora y Padrón</div>
+                        </div>
+                    </div>
+                    <div class="architecture-base role-highlight target-cc target-dt target-gg">
+                        <div class="focus-badge">Transversal</div>
+                        <div class="module-kicker">Módulo transversal</div>
+                        <div class="module-title">Atención Omnicanal Asistida</div>
+                    </div>
+                </div>
+                <div class="value-box">
+                    <p><span class="highlight-text">Importante:</span> la automatización documental no se presenta como un módulo independiente. Forma parte del <strong>Módulo I · Metas Asistenciales MSP</strong>, como capacidad para lectura, extracción y procesamiento de información dentro de ese flujo.</p>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Módulo destacado · Dirección Técnica y Gerencia</span>
+                    <h2 class="slide-title">Gestión de Metas Asistenciales MSP y automatización documental</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="card role-highlight target-dt">
+                        <div class="focus-badge">Dirección Técnica</div>
+                        <div class="card-title">Seguimiento estructurado de población objetivo</div>
+                        <ul class="custom-list">
+                            <li>Segmentación por edad, condición y criterio asistencial.</li>
+                            <li>Campañas proactivas para controles, screenings y seguimientos.</li>
+                            <li>Alertas por plazos críticos y coordinación de próximos pasos.</li>
+                            <li>Registro trazable de contacto, respuesta y no consentimiento.</li>
+                        </ul>
+                    </div>
+                    <div class="card role-highlight target-dt target-gg">
+                        <div class="focus-badge">Dirección Técnica</div>
+                        <div class="card-title">Gobernanza de datos y reportabilidad</div>
+                        <ul class="custom-list">
+                            <li>Lectura inteligente de resultados e informes externos en PDF.</li>
+                            <li>Extracción de datos relevantes para reducir digitación manual.</li>
+                            <li>Preparación de información para planillas nominalizadas y reportes.</li>
+                            <li>Reducción de errores operativos en procesos intensivos en datos.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="section-note">El objetivo es convertir procesos manuales, dispersos o dependientes de planillas en flujos trazables, medibles y escalables.</p>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Módulo destacado · Operaciones y Contact Center</span>
+                    <h2 class="slide-title">Citas, estudios y atención omnicanal con derivación asistida</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="card role-highlight target-cc">
+                        <div class="focus-badge">Operaciones</div>
+                        <div class="card-title">Coordinación avanzada de agendas</div>
+                        <ul class="custom-list">
+                            <li>Consultas médicas, especialidades, laboratorio, imagenología y servicios periféricos.</li>
+                            <li>Gestión de estudios con preparación previa y reglas operativas específicas.</li>
+                            <li>Reasignación de cancelaciones hacia listas de espera.</li>
+                            <li>Seguimiento proactivo de pacientes crónicos y controles vigentes.</li>
+                        </ul>
+                    </div>
+                    <div class="card role-highlight target-cc">
+                        <div class="focus-badge">Contact Center</div>
+                        <div class="card-title">Canales digitales y voz asistida</div>
+                        <ul class="custom-list">
+                            <li>Resolución de consultas frecuentes por WhatsApp y voz.</li>
+                            <li>Automatización de preguntas sobre copagos, coberturas, requisitos y credenciales.</li>
+                            <li>Derivación al operador humano con contexto completo.</li>
+                            <li>Registro de interacciones para control, auditoría y mejora continua.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="value-box">
+                    <p>La automatización absorbe volumen repetitivo y la operación humana se reserva para casos que requieren criterio, empatía, contención o resolución especializada.</p>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Módulo destacado · Gerencia General y Finanzas</span>
+                    <h2 class="slide-title">Retención, mora y gestión comercial del padrón</h2>
+                </div>
+                <p class="lead-text">Corefone permite ejecutar acciones sistemáticas sobre flujos comerciales y administrativos que impactan directamente en ingresos recurrentes y sostenibilidad del padrón.</p>
+                <div class="grid-2">
+                    <div class="card role-highlight target-gg">
+                        <div class="focus-badge">Gerencia</div>
+                        <div class="card-title">Recuperación de socios particulares en mora</div>
+                        <ul class="custom-list">
+                            <li>Campañas salientes segmentadas por antigüedad, monto y comportamiento.</li>
+                            <li>Interacciones automatizadas con reglas comerciales aprobadas.</li>
+                            <li>Ofrecimiento de convenios, refinanciación o beneficios definidos por la institución.</li>
+                            <li>Escalamiento a operador humano cuando el caso lo requiere.</li>
+                        </ul>
+                    </div>
+                    <div class="card role-highlight target-gg">
+                        <div class="focus-badge">Gerencia</div>
+                        <div class="card-title">Retención preventiva y contactación proactiva</div>
+                        <ul class="custom-list">
+                            <li>Acciones de fidelización en momentos críticos del ciclo del afiliado.</li>
+                            <li>Chequeos de satisfacción y coordinación de pendientes asistenciales.</li>
+                            <li>Campañas outbound para baja reciente, particulares y segmentos definidos.</li>
+                            <li>Indicadores de contacto, respuesta, conversión y recupero.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Modelo de implementación</span>
+                    <h2 class="slide-title">Primera fase de implementación controlada — 90 días</h2>
+                </div>
+                <p class="lead-text">Un alcance inicial acotado, medible y escalable para generar resultados operativos antes de una adopción institucional más amplia.</p>
+                <div class="timeline">
+                    <div class="timeline-step" data-step="Días 1–30">
+                        <h3>Relevamiento operativo y técnico</h3>
+                        <ul class="custom-list" style="margin-top: 0.7rem;">
+                            <li>Mapeo del proceso inicial seleccionado.</li>
+                            <li>Revisión de fuentes de datos, agenda, canales y reglas actuales.</li>
+                            <li>Definición de indicadores de éxito.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-step" data-step="Días 31–60">
+                        <h3>Configuración de flujos y canales</h3>
+                        <ul class="custom-list" style="margin-top: 0.7rem;">
+                            <li>Parametrización de reglas de negocio.</li>
+                            <li>Diseño de guiones, automatizaciones y derivaciones.</li>
+                            <li>Pruebas funcionales con datos controlados.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-step" data-step="Días 61–90">
+                        <h3>Ejecución y medición inicial</h3>
+                        <ul class="custom-list" style="margin-top: 0.7rem;">
+                            <li>Puesta en marcha sobre un proceso de alto impacto.</li>
+                            <li>Monitoreo de productividad, contactabilidad y resultado.</li>
+                            <li>Plan de escalamiento por módulo.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="value-box">
+                    <p><span class="highlight-text">Criterio de inicio:</span> seleccionar un proceso de alto impacto, bajo riesgo operativo y resultados medibles en 90 días.</p>
+                </div>
+            </section>
+
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-tag">Próximos pasos comerciales</span>
+                    <h2 class="slide-title">Delimitación de la primera fase de trabajo</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="card accent">
+                        <div class="eyebrow">Paso 01</div>
+                        <h3>Definir el proceso inicial</h3>
+                        <p class="section-note">Seleccionar el flujo de mayor impacto para iniciar: metas asistenciales, citas/estudios, atención omnicanal o recuperación comercial.</p>
+                    </div>
+                    <div class="card accent">
+                        <div class="eyebrow">Paso 02</div>
+                        <h3>Sesión técnico-operativa</h3>
+                        <p class="section-note">Coordinar una instancia breve con referentes de TI, operaciones y negocio para dimensionar datos, sistemas, canales e indicadores.</p>
+                    </div>
+                    <div class="card accent">
+                        <div class="eyebrow">Paso 03</div>
+                        <h3>Propuesta de alcance</h3>
+                        <p class="section-note">Presentar alcance, cronograma, responsabilidades, modelo comercial e indicadores de éxito para la primera fase de implementación.</p>
+                    </div>
+                    <div class="card accent">
+                        <div class="eyebrow">Paso 04</div>
+                        <h3>Escalamiento modular</h3>
+                        <p class="section-note">Una vez demostrado el impacto inicial, ampliar gradualmente hacia nuevos módulos, procesos y áreas de la institución.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 2.5rem; text-align: center; color: var(--corefone-blue); font-weight: 850; font-size: 1.15rem;">
+                    Corefone Salud 360: tecnología y operación para mejorar la productividad institucional en salud.
+                </div>
+            </section>
+
+            <div class="presentation-controls">
+                <button class="btn-nav" onclick="prevSlide()">◀ Anterior</button>
+                <span class="slide-counter" id="slideCounter">1 / 10</span>
+                <button class="btn-nav" onclick="nextSlide()">Siguiente ▶</button>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </main>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const links = document.querySelectorAll('.nav-link');
+        const roleButtons = document.querySelectorAll('.role-btn');
+        const slideCounter = document.getElementById('slideCounter');
+        const progressFill = document.getElementById('progressFill');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.sidebar-overlay');
+        const hamburger = document.querySelector('.hamburger-btn');
+
+        /* ── Sidebar toggle (mobile) ── */
+        function openSidebar() {
+            sidebar.classList.add('open');
+            overlay.classList.add('visible');
+            hamburger.setAttribute('aria-expanded', 'true');
+            hamburger.innerHTML = '✕';
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('visible');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.innerHTML = '☰';
+        }
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+        });
+        overlay.addEventListener('click', closeSidebar);
+
+        /* ── Slide navigation ── */
+        function showSlide(index, closeMobileMenu = false) {
+            if (index < 0 || index >= slides.length) return;
+            slides.forEach(slide => slide.classList.remove('active'));
+            links.forEach(link => link.classList.remove('active'));
+            slides[index].classList.add('active');
+            links[index].classList.add('active');
+            currentSlideIndex = index;
+            slideCounter.textContent = `${index + 1} / ${slides.length}`;
+            progressFill.style.width = `${((index + 1) / slides.length) * 100}%`;
+            links[index].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            // scroll to top of main content on mobile
+            const mainContent = document.querySelector('.main-content');
+            mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (closeMobileMenu) closeSidebar();
+        }
+
+        function goToSlide(index) {
+            showSlide(index, true);
+        }
+
+        function nextSlide() {
+            const next = currentSlideIndex + 1 >= slides.length ? 0 : currentSlideIndex + 1;
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = currentSlideIndex - 1 < 0 ? slides.length - 1 : currentSlideIndex - 1;
+            showSlide(prev);
+        }
+
+        function setRoleFocus(role) {
+            roleButtons.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${role}`).classList.add('active');
+            const cards = document.querySelectorAll('.role-highlight');
+            cards.forEach(card => {
+                card.classList.remove('active-focus');
+                if (role === 'all') {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                } else if (card.classList.contains(`target-${role}`)) {
+                    card.classList.add('active-focus');
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1.015)';
+                } else {
+                    card.style.opacity = '0.35';
+                    card.style.transform = 'scale(0.985)';
+                }
+            });
+        }
+
+        /* ── Keyboard navigation ── */
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                prevSlide();
+            } else if (event.key === 'Escape') {
+                closeSidebar();
+            }
+        });
+
+        /* ── Touch swipe navigation ── */
+        let touchStartX = 0;
+        let touchStartY = 0;
+        const mainEl = document.querySelector('.main-content');
+
+        mainEl.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        mainEl.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].screenX - touchStartX;
+            const dy = e.changedTouches[0].screenY - touchStartY;
+            // Only trigger if horizontal swipe dominates
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+                if (dx < 0) nextSlide();
+                else prevSlide();
+            }
+        }, { passive: true });
+
+        showSlide(0);
+    </script>
+</body>
+</html>
