@@ -46,6 +46,8 @@
         .sidebar {
             width: 350px;
             background: linear-gradient(180deg, var(--corefone-blue) 0%, #071B30 100%);
+            background-color: #071B30;
+            background-attachment: local;
             color: var(--white);
             padding: 2rem 1.25rem;
             position: fixed;
@@ -1119,12 +1121,14 @@
             overlay.classList.add('visible');
             hamburger.setAttribute('aria-expanded', 'true');
             hamburger.innerHTML = '✕';
+            document.body.style.overflow = 'hidden';
         }
         function closeSidebar() {
             sidebar.classList.remove('open');
             overlay.classList.remove('visible');
             hamburger.setAttribute('aria-expanded', 'false');
             hamburger.innerHTML = '☰';
+            document.body.style.overflow = '';
         }
         hamburger.addEventListener('click', () => {
             sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
